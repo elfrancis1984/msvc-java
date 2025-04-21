@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CursoServiceImpl implements CursoService{
+public class CursoServiceImpl implements CursoService {
 
-    @Autowired
-    private CursoRepository repository;
+    private final CursoRepository repository;
+
+    public CursoServiceImpl(CursoRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     @Transactional(readOnly = true)

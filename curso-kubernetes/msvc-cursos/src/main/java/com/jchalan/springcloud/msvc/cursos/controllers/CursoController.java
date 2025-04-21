@@ -2,6 +2,7 @@ package com.jchalan.springcloud.msvc.cursos.controllers;
 
 import com.jchalan.springcloud.msvc.cursos.models.entity.Curso;
 import com.jchalan.springcloud.msvc.cursos.services.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,11 @@ import java.util.Optional;
 @RestController
 public class CursoController {
 
-    @Autowired
-    private CursoService service;
+    private final CursoService service;
+
+    public CursoController(CursoService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Curso>> listar() {
@@ -31,7 +35,7 @@ public class CursoController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> crear(@RequestBody Curso curso) {
+    public ResponseEntity<?> crear(@Valid @RequestBody Curso curso) {
         Curso cursoDb = service.guardar(curso);
         return ResponseEntity.status(HttpStatus.CREATED).body(cursoDb);
     }
