@@ -71,7 +71,7 @@ public class CursoController {
     }
 
     @PutMapping("/asignar-usuario/{cursoId}")
-    public ResponseEntity<?> asignarUsuario(@RequestBody Usuario usuario, @pathVariable Long cursoId) {
+    public ResponseEntity<?> asignarUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId) {
         Optional<Usuario> o;
         try {
             o = service.asignarUsuario(usuario, cursoId);
@@ -90,7 +90,7 @@ public class CursoController {
     }
 
     @PostMapping("/crear-usuario/{cursoId}")
-    public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario, @pathVariable Long cursoId) {
+    public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId) {
         Optional<Usuario> o;
         try {
             o = service.crearUsuario(usuario, cursoId);
@@ -109,7 +109,7 @@ public class CursoController {
     }
 
     @DeleteMapping("/eliminar-usuario/{cursoId}")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario, @pathVariable Long cursoId) {
+    public ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId) {
         Optional<Usuario> o;
         try {
             o = service.eliminarUsuario(usuario, cursoId);
